@@ -13,10 +13,10 @@
 defined('ABSPATH') or die('You do not have permissions to this file!');
 
 if (in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_option('active_plugins')))){
-	add_action('init', array($this, 'wsed_init'));
+	add_action('init', 'wsed_init');
 }else{
-	add_action('admin_init', array($this, 'wsed_plugin_deactivate'));
-	add_action('admin_notices', array($this, 'wsed_woocommerce_missing_notice' ));
+	add_action('admin_init', 'wsed_plugin_deactivate');
+	add_action('admin_notices', 'wsed_woocommerce_missing_notice');
 }
 
 function wsed_init(){
