@@ -20,7 +20,7 @@ if (in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_
 }
 
 function wsed_init(){
-	if(is_admin()){
+	if(current_user_can('administrator')){
 		include_once 'includes/wsed-backend.php';
 	}
 	include_once 'includes/wsed-frontend.php';
