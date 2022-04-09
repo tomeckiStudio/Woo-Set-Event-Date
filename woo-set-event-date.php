@@ -20,14 +20,14 @@ if (in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_
 }
 
 function wsed_init(){
-	if(current_user_can('administrator')){
+	if(is_admin() && current_user_can('administrator')){
 		include_once 'includes/wsed-backend.php';
 	}
 	include_once 'includes/wsed-frontend.php';
 }
 
 function wsed_woocommerce_missing_notice(){
-	echo '<div class="error"><p>' . __( 'You need an active WooCommerce for the Woo Set Event Date plugin to work!', 'woo-set-event-date') . '</p></div>';
+	echo sprintf('<div class="error"><p>%s</p></div>', __( 'You need an active WooCommerce for the Woo Set Event Date plugin to work!', 'woo-set-event-date'));
 	if (isset($_GET['activate']))
 		unset($_GET['activate']);	
 }
